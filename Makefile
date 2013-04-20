@@ -1,7 +1,10 @@
 BACKUP_DIR := "$(HOME)/.backup_dotfiles"
 INSTALL_DIR := "$(HOME)/.dotfiles"
-SRC := $(shell find . -type d \( -path ./.git -o -path . \) -prune -o -name ".*" -print)
+SRC := $(shell find . -path ./.git -prune -o -name ".?*" -print)
 TIMESTAMP := `date +%Y%m%d%H%M%S`
+
+fun:
+	@echo "$(SRC)"
 
 backup:
 	test -d $(BACKUP_DIR) || mkdir $(BACKUP_DIR)
@@ -14,6 +17,10 @@ backup:
 	  fi \
 	done
 
-install: SRC = $(shell find `pwd` -path `pwd`/.git -prune -o -name ".*" -print)
-install:
+install: backup
 	test -d $(INSTALL_DIR) || mkdir $(INSTALL_DIR)
+	cp $(SRC) $(INSTALL_DIR)
+	for file in $(SRC); \
+	do \
+	  ln -fs $(INSTALL_DIR)/$${file:2} $(HOME)/$${file:2}; \
+	done
