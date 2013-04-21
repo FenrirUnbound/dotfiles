@@ -5,6 +5,12 @@ Assortment of environment &amp; configuration files
 
 # Resources
 
+### Bashrc
+* https://github.com/jer/dotfiles
+
+### Bash Profile
+* http://lists.freebsd.org/pipermail/freebsd-questions/2004-April/043557.html
+
 ### Gitconfig
 * http://jblevins.org/log/git-colors
 * https://github.com/amix/vimrc
