@@ -16,13 +16,10 @@ alias tmat='tmux attach-session -t '
 alias tml='tmux list-sessions '
  
 # Git related
-alias Git='cd ~/Git'
 alias gs='git status '
 alias go='git checkout '
 
 # Directory-related alias
-alias Perf='cd ~/Perforce'
-alias Prog='cd ~/Documents/Prog'
+alias Git='cd ~/Git'
 alias Workspace='cd ~/Documents/workspace'
 alias WebServer='cd /Library/WebServer'
-alias zf='/usr/local/ZendFrameworkCli/bin/zf.sh'
