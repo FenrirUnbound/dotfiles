@@ -3,17 +3,14 @@ INSTALL_DIR := "$(HOME)/.dotfiles"
 SRC := $(shell find . -path ./.git -prune -o -name ".?*" -print)
 TIMESTAMP := `date +%Y%m%d%H%M%S`
 
-fun:
-	@echo "$(SRC)"
-
 backup:
 	test -d $(BACKUP_DIR) || mkdir $(BACKUP_DIR)
 	test -d $(BACKUP_DIR)/$(TIMESTAMP) || mkdir $(BACKUP_DIR)/$(TIMESTAMP)
-	for me in $(SRC); \
+	for file in $(SRC); \
 	do \
-	  if [ -e "$(HOME)/$${me:2}" ]; \
+	  if [ -e "$(HOME)/$${file:2}" ]; \
 	  then \
-		cp "$(HOME)/$${me:2}" "$(BACKUP_DIR)/$(TIMESTAMP)/"; \
+		cp "$(HOME)/$${file:2}" "$(BACKUP_DIR)/$(TIMESTAMP)/"; \
 	  fi \
 	done
 

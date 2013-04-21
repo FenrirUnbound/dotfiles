@@ -71,7 +71,7 @@ set shiftwidth=2            " number of spaces to auto-indent
 set smartindent             " Smart autoindent when starting a new line
 set smarttab                " insert tabs at line beginning based on shiftwidth
 set softtabstop=2           " Tab is 2 spaces when editing
-set tabstop=2               " Tab is 2 spaces when reading in a file
+set tabstop=4               " Tab is 2 spaces when reading in a file
 "set noexpandtab            " tabs are preserved (i.e., not spaces)
 
 
