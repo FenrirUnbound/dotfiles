@@ -45,6 +45,13 @@ _set_aliases() {
   alias WebServer='cd /Library/WebServer'
 }
 
+_set_term() {
+    # I don't use screen and this option breaks a lot of ssh sessions
+    if [ "$TERM" = "screen-256color" ]; then
+        export TERM="xterm-256color"
+    fi
+}
+
 export PS1="\u:\w $ "
 
 export CLICOLOR=1
@@ -55,3 +62,4 @@ export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 _manpage_color
 _set_aliases
 _set_history
+_set_term
