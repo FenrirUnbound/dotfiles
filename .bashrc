@@ -67,7 +67,7 @@ _set_prompt() {
     local NEWLINE="\n"
     local LINE1="\342\224\214${White}(${Cyan}\w${White})"
     local LINE2="\342\224\224\342\224\200(${Blue}\u${Purple}@${Blue}\h${White})-> "
-    export PS1="${NEWLINE}${LINE1} \$(git_branch)${NEWLINE}${LINE2}"
+    export PS1="${NEWLINE}${LINE1} \$(git_branch)${NEWLINE}${LINE2}${Color_Off}"
 }
 
 git_branch() {
