@@ -45,14 +45,40 @@ _set_aliases() {
   alias WebServer='cd /Library/WebServer'
 }
 
-_set_term() {
-    # I don't use screen and this option breaks a lot of ssh sessions
-    if [ "$TERM" = "screen-256color" ]; then
-        export TERM="xterm-256color"
-    fi
+_set_prompt() {
+    # Reset
+    local Color_Off='\[\e[0m\]'       # Text Reset
+
+    # Regular Colors
+    local Black='\[\e[0;30m\]'        # Black
+    local Red='\[\e[0;31m\]'          # Red
+    local Green='\[\e[0;32m\]'        # Green
+    local Yellow='\[\e[0;33m\]'       # Yellow
+    local Blue='\[\e[0;34m\]'         # Blue
+    local Purple='\[\e[0;35m\]'       # Purple
+    local Cyan='\[\e[0;36m\]'         # Cyan
+    local White='\[\e[0;37m\]'        # White
+
+    : ${PROMPT_COLOR:=Yellow}
+    : ${PROMPT_COLOR2:=Blue}
+    local C1=${!PROMPT_COLOR}
+    local C2=${!PROMPT_COLOR2}
+
+    local NEWLINE="\n"
+    local LINE1="\342\224\214${White}(${Cyan}\w${White})"
+    local LINE2="\342\224\224\342\224\200(${Blue}\u${Purple}@${Blue}\h${White})-> "
+    export PS1="${NEWLINE}${LINE1} \$(git_branch)${NEWLINE}${LINE2}"
 }
 
-export PS1="\u:\w $ "
+git_branch() {
+    [ -d .git ] || git rev-parse --git-dir 2> /dev/null || return
+    local BRANCH=$(git branch --no-color 2>/dev/null | sed -e "/^[^*]/d" -e "s/* //")
+    local ALLCHANGED=$(git status --porcelain 2>/dev/null | wc -l | tr -d ' ')
+    echo "[${BRANCH}:${ALLCHANGED}]"
+}
+
+
+#export PS1="\u:\w $ "
 
 export CLICOLOR=1
 #export LSCOLORS=Exfxcxdxbxegedabagacad
@@ -62,4 +88,4 @@ export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 _manpage_color
 _set_aliases
 _set_history
-_set_term
+_set_prompt
