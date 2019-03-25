@@ -55,3 +55,6 @@
   added = yellow
   changed = green
   untracked = cyan
+
+[core]
+	editor = vim
