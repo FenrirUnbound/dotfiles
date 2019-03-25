@@ -11,6 +11,11 @@ Assortment of environment &amp; configuration files
 ### Bash Profile
 * http://lists.freebsd.org/pipermail/freebsd-questions/2004-April/043557.html
 
+### Dotbot
+
+* https://github.com/anishathalye/dotbot/
+* machine-specific configurations: https://github.com/anishathalye/dotbot/pull/11#issuecomment-73082152
+
 ### Gitconfig
 * http://jblevins.org/log/git-colors
 * https://github.com/amix/vimrc

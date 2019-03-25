@@ -21,3 +21,6 @@ install: backup
 	do \
 	  ln -fs $(INSTALL_DIR)/$${file:2} $(HOME)/$${file:2}; \
 	done
+
+update-dotbot:
+	git submodule update --remote dotbot
