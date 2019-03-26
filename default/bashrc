@@ -73,6 +73,26 @@ git_branch() {
     echo "[${BRANCH}:${ALLCHANGED}]"
 }
 
+upnode() {
+  export NVM_DIR="$HOME/.nvm"
+  # load nvm
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+  # nvm bash_completion
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+}
+
+uppython() {
+  export PYENV_ROOT="$HOME/.pyenv"
+  eval "$(pyenv init -)"
+
+  export PATH=$PATH:$PYENV_ROOT/bin
+}
+
+uptmux() {
+  tmux new-session -d -s mandalore
+  tmux select-window -t mandalore:0
+  tmux -2 attach-session -t mandalore
+}
 
 export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
@@ -81,3 +101,8 @@ _manpage_color
 _set_aliases
 _set_history
 _set_prompt
+
+# Allow local customizations
+if [ -f ~/.bashrc_local ]; then
+  source ~/.bashrc_local
+fi
