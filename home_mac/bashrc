@@ -85,7 +85,29 @@ export CLICOLOR=1
 #export LSCOLORS=ExFxCxDxBxegedabagacad
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 
+
 _manpage_color
 _set_aliases
 _set_history
 _set_prompt
+
+########
+# DIFF
+########
+
+# Allow TTY for GPG passphrase
+export GPG_TTY=$(tty)
+
+# Add kubernetes-related information to PS1
+#source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
+
+pasta() {
+  echo "$1" | pbcopy
+}
+
+cleanupdockerimages() {
+  docker rmi `docker images | grep "none" | tr -s ' ' | cut -d' ' -f3`
+  docker volume rm $(docker volume ls -qf dangling=true)
+  docker rmi $(docker images -q -f dangling=true)
+}
+
