@@ -99,3 +99,14 @@ if has("autocmd")
     "au FileType cpp,c,java,sh,pl,php,phtml,asp,xml,javascript   set autoindent
     "au FileType cpp,c,java,sh,pl,php,phtml,asp,xml,javascript   set expandtab
 endif
+
+
+"""""""""""""""""""""""""""""
+" Local config
+"""""""""""""""""""""""""""""
+" Don't copy the contents of an overwritten selection.
+vnoremap p "_dP             
+
+if filereadable(expand("~/.vimrc.local"))
+  source ~/.vimrc.local
+endif
