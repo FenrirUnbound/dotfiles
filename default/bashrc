@@ -66,6 +66,20 @@ _set_prompt() {
     export PS1="${NEWLINE}${LINE1} \$(git_branch)${NEWLINE}${LINE2}${Color_Off}"
 }
 
+cleangit() {
+  # source: https://stackoverflow.com/questions/6127328/how-can-i-delete-all-git-branches-which-have-been-merged
+  # git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d
+  git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d
+  git remote prune origin
+}
+
+fastforward() {
+  git checkout master
+  git fetch origin
+  git rebase origin/master
+  cleangit
+}
+
 git_branch() {
     [ -d .git ] || git rev-parse --git-dir 2> /dev/null || return
     local BRANCH=$(git branch --no-color 2>/dev/null | sed -e "/^[^*]/d" -e "s/* //")

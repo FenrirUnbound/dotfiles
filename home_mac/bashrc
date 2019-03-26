@@ -101,6 +101,9 @@ export GPG_TTY=$(tty)
 # Add kubernetes-related information to PS1
 #source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
 
+# Homebrew
+#export HOMEBREW_GITHUB_API_TOKEN=github_api_token_goes_here
+
 pasta() {
   echo "$1" | pbcopy
 }
@@ -110,4 +113,13 @@ cleanupdockerimages() {
   docker volume rm $(docker volume ls -qf dangling=true)
   docker rmi $(docker images -q -f dangling=true)
 }
+
+localgit() {
+    #git config --local user.email ""
+    #git config --local user.name ""
+    #git config --local user.signingkey signingkeygoeshere
+    #git config --local commit.gpgsign true
+    #git config --local gpg.program gpg
+}
+
 
