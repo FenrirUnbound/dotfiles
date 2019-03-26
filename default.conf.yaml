@@ -5,10 +5,10 @@
 - clean: ['~']
 
 - link:
-    ~/.dotfiles: ''
-    ~/.tmux.conf: tmux.conf
-    ~/.tmux.conf.local: tmux.conf.local
-    ~/.vimrc: vimrc
+    ~/.dotfiles: default
+    ~/.tmux.conf: default/tmux.conf
+    ~/.tmux.conf.local: default/tmux.conf.local
+    ~/.vimrc: default/vimrc
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
