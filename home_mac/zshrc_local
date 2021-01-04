@@ -1,0 +1,25 @@
+export ZSH="/Users/fenrir/.oh-my-zsh"
+
+# https://github.com/romkatv/powerlevel10k
+ZSH_THEME="powerlevel10k/powerlevel10k"
+
+# _ and - will be interchangeable. case-sensitive completion must be off. 
+HYPHEN_INSENSITIVE="true"
+
+# display red dots whilst waiting for completion.
+COMPLETION_WAITING_DOTS="true"
+
+# ? Maybe?
+# DISABLE_MAGIC_FUNCTIONS="true"
+# DISABLE_LS_COLORS="true"
+# DISABLE_AUTO_TITLE="true"
+# DISABLE_UNTRACKED_FILES_DIRTY="true".
+# HIST_STAMPS="yyyy/mm/dd"
+
+plugins=(
+    git
+)
+
+export EDITOR='vim'
+
+alias Git='cd ~/Git'

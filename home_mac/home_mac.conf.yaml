@@ -6,3 +6,5 @@
 
 - link:
     ~/.bashrc: home_mac/bashrc
+    ~/.zshrc_local: home_mac/zshrc_local
+

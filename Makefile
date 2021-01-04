@@ -8,19 +8,16 @@ backup:
 	test -d $(BACKUP_DIR)/$(TIMESTAMP) || mkdir $(BACKUP_DIR)/$(TIMESTAMP)
 	for file in $(SRC); \
 	do \
-	  if [ -e "$(HOME)/$${file:2}" ]; \
+	  target=`basename "$${file}"`; \
+	  echo "$${target}"; \
+	  if [ -e "$(HOME)/$${target}" ]; \
 	  then \
-		cp "$(HOME)/$${file:2}" "$(BACKUP_DIR)/$(TIMESTAMP)/"; \
+		cp "$(HOME)/$${target}" "$(BACKUP_DIR)/$(TIMESTAMP)/"; \
 	  fi \
-	done
-
-install: backup
-	test -d $(INSTALL_DIR) || mkdir $(INSTALL_DIR)
-	cp $(SRC) $(INSTALL_DIR)
-	for file in $(SRC); \
-	do \
-	  ln -fs $(INSTALL_DIR)/$${file:2} $(HOME)/$${file:2}; \
 	done
 
 update-dotbot:
 	git submodule update --remote dotbot
+
+init-dotbot:
+	git submodule update --init dotbot
