@@ -15,6 +15,10 @@
     ~/.tmux.conf.local: default/tmux.conf.local
     ~/.vimrc: default/vimrc
     ~/.vimrc.local: default/vimrc.local
+    ~/.zshrc: default/zshrc
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
