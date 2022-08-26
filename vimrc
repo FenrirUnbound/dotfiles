@@ -99,3 +99,11 @@ if has("autocmd")
     "au FileType cpp,c,java,sh,pl,php,phtml,asp,xml,javascript   set autoindent
     "au FileType cpp,c,java,sh,pl,php,phtml,asp,xml,javascript   set expandtab
 endif
+
+"""""""""""""""""""""""""""""
+" Enable Localized Settings
+"""""""""""""""""""""""""""""
+let $LOCALFILE=expand("~/.vimrc_local")
+if filereadable($LOCALFILE)
+    source $LOCALFILE
+endif

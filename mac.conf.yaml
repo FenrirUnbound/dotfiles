@@ -9,6 +9,7 @@
 
 - link:
     ~/.tmux.conf: mac/tmux.conf
+    ~/.zshrc_local: mac/zshrc
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]

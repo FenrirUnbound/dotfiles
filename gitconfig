@@ -57,3 +57,6 @@
   added = yellow
   changed = green
   untracked = cyan
+
+[include]
+  path = ~/.gitconfig_local
