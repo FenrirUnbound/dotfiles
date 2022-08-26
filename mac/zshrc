@@ -1,0 +1,58 @@
+export ZSH="/Users/fenrir/.oh-my-zsh"
+
+# https://github.com/romkatv/powerlevel10k
+ZSH_THEME="powerlevel10k/powerlevel10k"
+
+# _ and - will be interchangeable. case-sensitive completion must be off. 
+HYPHEN_INSENSITIVE="true"
+
+# display red dots whilst waiting for completion.
+COMPLETION_WAITING_DOTS="true"
+
+# Show prompt segment "kubecontext" only when the command you are typing
+# invokes kubectl, helm, kubens, kubectx, oc, istioctl, kogito, k9s or helmfile.
+#typeset -g POWERLEVEL9K_KUBECONTEXT_SHOW_ON_COMMAND='kubectl|helm|kubens|kubectx|oc|istioctl|kogito|k9s|helmfile'
+
+# ? Maybe?
+# DISABLE_MAGIC_FUNCTIONS="true"
+# DISABLE_LS_COLORS="true"
+# DISABLE_AUTO_TITLE="true"
+# DISABLE_UNTRACKED_FILES_DIRTY="true".
+# HIST_STAMPS="yyyy/mm/dd"
+
+plugins=(
+    git
+    jsontools
+    kube-ps1
+    kubectl
+)
+
+export EDITOR='vim'
+
+alias Git='cd ~/Git'
+alias kctx='kubectx'
+alias kns='kubens'
+
+function kube-toggle() {
+  if (( ${+POWERLEVEL9K_KUBECONTEXT_SHOW_ON_COMMAND} )); then
+    unset POWERLEVEL9K_KUBECONTEXT_SHOW_ON_COMMAND
+  else
+    POWERLEVEL9K_KUBECONTEXT_SHOW_ON_COMMAND='kubectl|helm|kubens|kubectx|oc|istioctl|kogito|k9s|helmfile'
+  fi
+  p10k reload
+  if zle; then
+    zle push-input
+    zle accept-line
+  fi
+}
+
+function uptmux() {
+  tmux new-session -d -s mandalore
+  tmux select-window -t mandalore:0
+  tmux -2 attach-session -t mandalore
+}
+
+function upnode() {
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+}
