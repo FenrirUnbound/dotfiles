@@ -1,0 +1,59 @@
+[alias]
+    br = branch
+    ci = commit
+    cl = clone
+    co = checkout
+    cp = cherry-pick
+    s = status
+    # Show modified files in last commit
+    dl = "!git ll -1"
+    # Show a diff last commit
+    dlc = diff --cached HEAD^
+    # See all commits related to a file
+    fl = log -u
+    # List all git aliases
+    la = "!git config -l | grep alias | cut -c 7-"
+
+    ### COMMIT HISTORY ###
+
+    # List oneline commits showing relative dates
+    ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
+    # List oneline commits showing dates
+    lds = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+    # Short git log
+    le = log --oneline --decorate
+    # List commits showing changed files
+    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+    # List with no colors (if you need to chain output with Unix pipes)
+    lnc = log --pretty=format:"%h\\ %s\\ [%cn]"
+    # Graph the commits
+    lol = log --graph --pretty=oneline --abbrev-commit
+    # Colored list of commits in short form & branch/tag annotations
+    ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+
+    ### MERGES ###
+
+    ours = "!f() { git co --ours $@ && git add $@; }; f"
+    theirs = "!f() { git co --theirs $@ && git add $@; }; f"
+
+# This enables the color schemes following it
+[color]
+  branch = auto
+  diff = auto
+  status = auto
+
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan

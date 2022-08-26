@@ -1,0 +1,16 @@
+- defaults:
+    link:
+      # create parent directories to the link as needed
+      create: true
+      # remove the old target if it's a symlink 
+      relink: true
+
+- clean: ['~']
+
+- link:
+    ~/.gitconfig: gitconfig
+    ~/.tmux.conf: tmux.conf
+    ~/.vimrc: vimrc
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
